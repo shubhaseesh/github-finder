@@ -1,7 +1,10 @@
-import "./App.css";
 
 function App() {
-  return <div className="App">Header</div>;
+  return (
+    <div className="display-flex">
+      <div className="">Header</div>
+    </div>
+  );
 }
 
 export default App;
