@@ -4,11 +4,11 @@ import UserItem from "./UserItem";
 import GithubContext from "../../store/github/GithubContext";
 
 const UserList = () => {
-  const { users, isLoading, fetchUsers } = useContext(GithubContext);
+  const { users, isLoading } = useContext(GithubContext);
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []);
 
   if (isLoading) {
     return <Spinner />;
