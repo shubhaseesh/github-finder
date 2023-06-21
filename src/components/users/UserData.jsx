@@ -1,14 +1,10 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Spinner from "../layout/Spinner";
 import UserItem from "./UserItem";
 import GithubContext from "../../store/github/GithubContext";
 
-const UserList = () => {
+const UserData = () => {
   const { users, isLoading } = useContext(GithubContext);
-
-  // useEffect(() => {
-  //   fetchUsers();
-  // }, []);
 
   if (isLoading) {
     return <Spinner />;
@@ -23,4 +19,4 @@ const UserList = () => {
   }
 };
 
-export default UserList;
+export default UserData;

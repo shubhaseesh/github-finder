@@ -1,13 +1,14 @@
-import React from 'react'
-import UserList from '../users/UserData'
+import React from "react";
+import UserData from "../users/UserData";
+import UserSearch from "../users/UserSearch";
 
 const Home = () => {
   return (
     <div>
-        <div className="h1 text-6xl">Welcome</div>
-        <UserList/>
+      <UserSearch />
+      <UserData />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

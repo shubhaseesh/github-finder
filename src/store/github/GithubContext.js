@@ -13,33 +13,41 @@ const initialState = {
 
 export const GithubProvider = ({ children }) => {
   const [state, dispatch] = useReducer(githubReducer, initialState);
-  // useEffect(()=>{
-  //   fetchUsers()
-  // }, [])
-  const fetchUsers = async () => {
-    setLoading()
+
+  const searchUsers = async (text) => {
+    setLoading();
+    const params = new URLSearchParams({
+      q: text,
+    });
     axios
-      .get(`${GITHUB_URL}/users`, {
+      .get(`${GITHUB_URL}/search/users?${params}`, {
         headers: {
           Authorization: `token ${GITHUB_TOKEN}`,
         },
       })
       .then((res) => {
+        const { items } = res.data;
         dispatch({
           type: "GET_USERS",
-          payload: res.data,
+          payload: items,
         });
       })
       .catch((err) => {
         console.error(err);
       });
   };
-  const setLoading = () => dispatch({
-    type: 'SET_LOADING'
-  })
+  const setLoading = () =>
+    dispatch({
+      type: "SET_LOADING",
+    });
+  const reset = () =>{
+    dispatch({
+      type: 'RESET'
+    })
+  }
   return (
     <GithubContext.Provider
-      value={{ users: state.users, isLoading: state.isLoading, fetchUsers }}
+      value={{ users: state.users, isLoading: state.isLoading, searchUsers, reset }}
     >
       {children}
     </GithubContext.Provider>
