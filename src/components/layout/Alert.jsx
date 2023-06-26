@@ -7,7 +7,7 @@ const Alert = () => {
   return (
     alert !== null &&
     alert.type === "error" && (
-      <div className="alert alert-error w-1/2">
+      <div className="alert alert-error w-1/4 mb-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -17,7 +17,7 @@ const Alert = () => {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth="2"
+            strokeWidth="2.5"
             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           ></path>
         </svg>

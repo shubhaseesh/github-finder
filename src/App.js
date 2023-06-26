@@ -4,9 +4,11 @@ import Footer from "./components/layout/Footer";
 import Home from "./components/pages/Home";
 import NotFound from "./components/pages/NotFound";
 import About from "./components/pages/About";
+import Alert from "./components/layout/Alert";
+import User from "./components/pages/User";
 import { GithubProvider } from "./store/github/GithubContext";
 import { AlertProvider } from "./store/alert/AlertContext";
-import Alert from "./components/layout/Alert";
+
 
 const App = () => {
   return (
@@ -16,13 +18,13 @@ const App = () => {
           <div className="flex flex-col justify-between h-screen">
             <Navbar />
             <main className="container mx-auto px-3 pb-12">
-              {/* <div className="mb-2 w-1/2"> */}
-                <Alert />
-              {/* </div> */}
+              <Alert />
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/user/:login" element={<User />} />
                 <Route path="/*" element={<NotFound />} />
+                <Route path="/not-found" element={<NotFound />} />
               </Routes>
             </main>
             <Footer />
