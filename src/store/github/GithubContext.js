@@ -75,7 +75,7 @@ export const GithubProvider = ({ children }) => {
   };
   // Get repos
   // login is the username
-  const getRepos = (login) => {
+  const getRepos = async (login) => {
     axios
       .get(`${GITHUB_URL}/users/${login}/repos`, {
         headers: {
