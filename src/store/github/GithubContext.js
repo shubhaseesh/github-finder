@@ -55,7 +55,7 @@ export const GithubProvider = ({ children }) => {
     });
   };
   // Get sigle user
-  const getUser = (login) => {
+  const getUser = async (login) => {
     axios
       .get(`${GITHUB_URL}/users/${login}`, {
         headers: {
