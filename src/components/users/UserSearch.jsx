@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import GithubContext from "../../store/github/GithubContext";
 import AlertContext from "../../store/alert/AlertContext";
+import _ from 'lodash';
 
 const UserSearch = () => {
   const [text, setText] = useState("");
@@ -43,7 +44,7 @@ const UserSearch = () => {
           </div>
         </form>
       </div>
-      {users && users.length > 0 && (
+      {!_.isUndefined(users) && (
         <div>
           <button onClick={reset} className="btn btn-ghost btn-lg">
             Clear
