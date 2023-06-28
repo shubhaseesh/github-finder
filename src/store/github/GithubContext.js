@@ -10,6 +10,7 @@ const initialState = {
   users: [],
   isLoading: false,
   user: {},
+  repos: [],
 };
 
 export const GithubProvider = ({ children }) => {
@@ -55,7 +56,6 @@ export const GithubProvider = ({ children }) => {
   };
   // Get sigle user
   const getUser = (login) => {
-    console.log(login);
     axios
       .get(`${GITHUB_URL}/users/${login}`, {
         headers: {
@@ -64,7 +64,6 @@ export const GithubProvider = ({ children }) => {
       })
       .then((res) => {
         const { data } = res;
-        console.log(res);
         dispatch({
           type: "GET_USER",
           payload: data,
@@ -74,12 +73,34 @@ export const GithubProvider = ({ children }) => {
         console.error(err);
       });
   };
+  // Get repos
+  // login is the username
+  const getRepos = (login) => {
+    axios
+      .get(`${GITHUB_URL}/users/${login}/repos`, {
+        headers: {
+          Authorization: `token ${GITHUB_TOKEN}`,
+        },
+      })
+      .then((res) => {
+        dispatch({
+          type: "GET_REPOS",
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <GithubContext.Provider
       value={{
         users: state.users,
         isLoading: state.isLoading,
         user: state.user,
+        repos: state.repos,
+        getRepos,
         searchUsers,
         reset,
         getUser,
