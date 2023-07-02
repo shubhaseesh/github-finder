@@ -46,7 +46,7 @@ const User = () => {
   }
   return (
     <>
-      <div className="w-full mx-auto lg:w-10/12  text-primary-content">
+      <div className="w-full mx-auto lg:w-10/12 text-primary-content">
         <div className="mb-4">
           <Link to="/" className="btn btn-outline">
             Back To Search
