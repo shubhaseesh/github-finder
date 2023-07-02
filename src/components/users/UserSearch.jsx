@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import GithubContext from "../../store/github/GithubContext";
 import AlertContext from "../../store/alert/AlertContext";
-import _ from 'lodash';
+import _ from "lodash";
 
 const UserSearch = () => {
   const [text, setText] = useState("");
@@ -10,8 +10,8 @@ const UserSearch = () => {
   const handleChange = (e) => setText(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (text === "") {
-      setAlert('Please enter something', 'error')
+    if (_.isEqual(_.size(_.trim(text)), 0) || _.isEqual(text, "")) {
+      setAlert("Please enter something", "error");
     } else {
       searchUsers(text);
       setText("");

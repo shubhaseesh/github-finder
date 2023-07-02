@@ -1,7 +1,6 @@
 import React, { useReducer, createContext } from "react";
 import axios from "axios";
 import githubReducer from "./GithubReducer";
-
 const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
 const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
@@ -15,7 +14,6 @@ const initialState = {
 
 export const GithubProvider = ({ children }) => {
   const [state, dispatch] = useReducer(githubReducer, initialState);
-
   // Search users
   const searchUsers = async (text) => {
     setLoading();
@@ -76,8 +74,13 @@ export const GithubProvider = ({ children }) => {
   // Get repos
   // login is the username
   const getRepos = async (login) => {
+    setLoading()
+    const params = new URLSearchParams({
+      sort: 'created',
+      per_page: 10,
+    })
     axios
-      .get(`${GITHUB_URL}/users/${login}/repos`, {
+      .get(`${GITHUB_URL}/users/${login}/repos?${params}`, {
         headers: {
           Authorization: `token ${GITHUB_TOKEN}`,
         },

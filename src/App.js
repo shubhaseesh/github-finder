@@ -9,7 +9,6 @@ import User from "./components/pages/User";
 import { GithubProvider } from "./store/github/GithubContext";
 import { AlertProvider } from "./store/alert/AlertContext";
 
-
 const App = () => {
   return (
     <GithubProvider>

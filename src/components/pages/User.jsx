@@ -2,29 +2,21 @@ import React from "react";
 import { useContext, useEffect } from "react";
 import GithubContext from "../../store/github/GithubContext";
 import { useParams } from "react-router-dom";
+import RepoList from "../repos/RepoList";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
 import { CiLocationOn, CiTwitter } from "react-icons/ci";
 import { CgWebsite } from "react-icons/cg";
 import { FaCodepen, FaStore, FaUsers } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { CgWorkAlt } from "react-icons/cg";
 const User = () => {
   const params = useParams();
   const {
     user: {
       login,
-      id,
-      node_id,
       avatar_url,
-      gravatar_id,
       html_url,
-      followers_url,
-      following_url,
-      gist_url,
-      starred_url,
-      subscription_url,
-      organizations_url,
-      repos_url,
-      events_url,
       type,
       name,
       company,
@@ -41,17 +33,20 @@ const User = () => {
     },
     getUser,
     isLoading,
+    repos,
+    getRepos,
   } = useContext(GithubContext);
   useEffect(() => {
     getUser(params.login);
-  }, [params.login]);
+    getRepos(params.login);
+  }, []);
 
   if (isLoading) {
     return <Spinner />;
   }
   return (
     <>
-      <div className="w-full mx-auto lg:w-10/12">
+      <div className="w-full mx-auto lg:w-10/12  text-primary-content">
         <div className="mb-4">
           <Link to="/" className="btn btn-outline">
             Back To Search
@@ -64,10 +59,10 @@ const User = () => {
           <div className="custom-card-image mb-6 md:mb-0">
             <div className="rounded-lg shadow-xl card image-full">
               <figure>
-                <img src={avatar_url} alt="" />
+                <img src={avatar_url} alt="avatar_url" />
               </figure>
               <div className="card-body justify-end mb-0">
-                <div className="flex flex-col text-xl text-slate-50">
+                <div className="flex flex-col text-xl text-primary-content">
                   <h2 className="card-title mb-0">{name}</h2>
                   <p>{login}</p>
                 </div>
@@ -127,6 +122,22 @@ const User = () => {
                   </div>
                 </div>
               )}
+              {company && (
+                <div className="stat">
+                  <div className="stat flex items-center">
+                    <CgWorkAlt />
+                    {company}
+                  </div>
+                </div>
+              )}
+              {email && (
+                <div className="stat">
+                  <div className="stat flex items-center">
+                    <HiOutlineMail />
+                    {email}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -168,6 +179,7 @@ const User = () => {
             </div>
           </div>
         </div>
+        <RepoList repos={repos} />
       </div>
     </>
   );
