@@ -10,7 +10,7 @@ const RepoList = ({ repos }) => {
           Latest Repositories
         </h2>
         {_.map(repos, (repo) => (
-          <RepoItem key={repo.id} repo={repo}/>
+          <RepoItem key={repo.id} repo={repo} />
         ))}
       </div>
     </div>

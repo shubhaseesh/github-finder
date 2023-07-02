@@ -6,7 +6,7 @@ import { searchUsers } from "../../store/github/GithubActions";
 
 const UserSearch = () => {
   const [text, setText] = useState("");
-  const { users, dispatch, reset } = useContext(GithubContext);
+  const { users, dispatch } = useContext(GithubContext);
   const { setAlert } = useContext(AlertContext);
   const handleChange = (e) => setText(e.target.value);
   const handleSubmit = async (e) => {
@@ -21,6 +21,9 @@ const UserSearch = () => {
     }
   };
 
+  const reset = () => {
+    dispatch({ type: "RESET" });
+  }
   return (
     <div
       className="grid grid-cols-1 xl:grid-cols-2

@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { useContext, useEffect } from "react";
 import GithubContext from "../../store/github/GithubContext";
 import { useParams } from "react-router-dom";
@@ -10,37 +11,37 @@ import { CgWebsite } from "react-icons/cg";
 import { FaCodepen, FaStore, FaUsers } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { CgWorkAlt } from "react-icons/cg";
+import { getUserAndRepos } from "../../store/github/GithubActions";
 const User = () => {
   const params = useParams();
-  const {
-    user: {
-      login,
-      avatar_url,
-      html_url,
-      type,
-      name,
-      company,
-      blog,
-      location,
-      email,
-      bio,
-      hirable,
-      twitter_username,
-      public_repos,
-      public_gists,
-      followers,
-      following,
-    },
-    getUser,
-    isLoading,
-    repos,
-    getRepos,
-  } = useContext(GithubContext);
-  useEffect(() => {
-    getUser(params.login);
-    getRepos(params.login);
-  }, []);
+  const { user, dispatch, isLoading, repos } = useContext(GithubContext);
 
+  useEffect(() => {
+    dispatch({ type: "SET_LOADING" });
+    const fetchUserAndRepos = async () => {
+      const res = await getUserAndRepos(params.login);
+      dispatch({ type: "GET_USER_AND_REPOS", payload: _.get(res, "0") });
+    };
+    fetchUserAndRepos();
+  }, [dispatch, params.login]);
+  const {
+    login,
+    avatar_url,
+    html_url,
+    type,
+    name,
+    company,
+    blog,
+    location,
+    email,
+    bio,
+    hirable,
+    twitter_username,
+    public_repos,
+    public_gists,
+    followers,
+    following,
+  } = user;
   if (isLoading) {
     return <Spinner />;
   }
