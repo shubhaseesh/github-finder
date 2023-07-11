@@ -50,7 +50,7 @@ const UserSearch = () => {
           </div>
         </form>
       </div>
-      {!_.isUndefined(users) && (
+      {_.size(users) > 0 && (
         <div>
           <button onClick={reset} className="btn btn-ghost btn-lg">
             Clear
