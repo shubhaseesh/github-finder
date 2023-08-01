@@ -60,7 +60,7 @@ const User = () => {
           <div className="custom-card-image mb-6 md:mb-0">
             <div className="rounded-lg shadow-xl card image-full">
               <figure>
-                <img src={avatar_url} alt="avatar_url" />
+                <img src={avatar_url} alt="avatar_url"/>
               </figure>
               <div className="card-body justify-end mb-0">
                 <div className="flex flex-col text-xl text-primary-content">
@@ -91,11 +91,11 @@ const User = () => {
                 </a>
               </div>
             </div>
-            <div className="w-full rounded-lg shadow-md bg-base-100 stats">
+            <div className="w-full rounded-lg shadow-md bg-base-200 stats">
               {location && (
                 <div className="stat flex items-center">
                   <CiLocationOn />
-                  <p className="stat-title">{location}</p>
+                  <p className="text-gray-700">{location}</p>
                 </div>
               )}
 
@@ -142,40 +142,40 @@ const User = () => {
             </div>
           </div>
         </div>
-        <div className="w-full mb-6 rounded-lg shadow-md stats">
+        <div className="w-full mb-6 rounded-lg shadow-md stats bg-base-200">
           <div className="stat">
-            <div className="stat-figure text-secondary">
+            <div className="stat-figure text-gray-700">
               <FaUsers className="text-3xl md:text-5xl" />
             </div>
-            <div className="stat-title pr-5">Followers</div>
-            <div className="stat-value pr-5 text-3xl md:text-4xl">
+            <div className="text-gray-700 pr-5">Followers</div>
+            <div className="text-black pr-5 text-3xl md:text-4xl">
               {followers}
             </div>
           </div>
           <div className="stat">
-            <div className="stat-figure text-secondary">
+            <div className="stat-figure text-gray-700">
               <FaUsers className="text-3xl md:text-5xl" />
             </div>
-            <div className="stat-title pr-5">Following</div>
-            <div className="stat-value pr-5 text-3xl md:text-4xl">
+            <div className="text-gray-700 pr-5">Following</div>
+            <div className="text-black pr-5 text-3xl md:text-4xl">
               {following}
             </div>
           </div>
           <div className="stat">
-            <div className="stat-figure text-secondary">
+            <div className="stat-figure text-gray-700">
               <FaCodepen className="text-3xl md:text-5xl" />
             </div>
-            <div className="stat-title pr-5">Public Repos</div>
-            <div className="stat-value pr-5 text-3xl md:text-4xl">
+            <div className="text-gray-700 pr-5">Public Repos</div>
+            <div className="text-black pr-5 text-3xl md:text-4xl">
               {public_repos}
             </div>
           </div>
           <div className="stat">
-            <div className="stat-figure text-secondary">
+            <div className="stat-figure text-gray-700">
               <FaStore className="text-3xl md:text-5xl" />
             </div>
-            <div className="stat-title pr-5">Public Gists</div>
-            <div className="stat-value pr-5 text-3xl md:text-4xl">
+            <div className="text-gray-700 pr-5">Public Gists</div>
+            <div className="text-black pr-5 text-3xl md:text-4xl">
               {public_gists}
             </div>
           </div>

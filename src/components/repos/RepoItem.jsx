@@ -19,14 +19,14 @@ const RepoItem = ({ repo }) => {
     stargazers_count,
   } = repo;
   return (
-    <div className="mb-2 rounded-md card bg-gray-800 hover:bg-gray-900">
+    <div className="mb-2 rounded-md card bg-white hover:bg-gray-200">
       <div className="card-body">
-        <h3 className="mb-2 text-xl font-semibold">
+        <h3 className="mb-2 text-xl font-semibold text-blue-600">
           <a href={html_url} rel="noreferrer">
             <FaLink className="inline mr-1" />
             {name}
           </a>
-          <p className="mb-3">{description}</p>
+          <p className="mb-3 text-gray-600">{description}</p>
           <div>
             <div className="mr-2 badge badge-info badge-lg">
               <FaEye className="mr-2" />
