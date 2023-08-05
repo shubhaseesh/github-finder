@@ -65,16 +65,16 @@ const User = () => {
               <div className="card-body justify-end mb-0">
                 <div className="flex flex-col text-xl text-primary-content">
                   <h2 className="card-title mb-0">{name}</h2>
-                  <p>{login}</p>
+                  <h3>{login}</h3>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-span-2">
             <div className="mb-6">
-              <h1 className="text-3xl card-title">
+              <h1 className="text-3xl text-gray-700 card-title">
                 {name}
-                <div className="ml-2 mr-1 badge badge-success">{type}</div>
+                <div className="ml-0 mr-1 badge badge-success">{type}</div>
                 {hirable && (
                   <div className="mx-1 badge badge-info">Hirable</div>
                 )}
